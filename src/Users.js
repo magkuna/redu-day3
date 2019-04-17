@@ -5,8 +5,13 @@ import { setUsersActionCreator } from './state/users'
 import { connect } from 'react-redux'
 
 const Users = (props) => {
-    props._setUsers('ala')
-
+    if(props._users === null){
+    fetch('https://randomuser.me/api')
+        .then(response => response.json())
+        .then(data => {
+            props._setUsers(data.results)
+        })
+}
     return (
         <div>
             USERS
@@ -15,6 +20,7 @@ const Users = (props) => {
 }
 
 const mapStateToProps = state => ({
+    _users: state.users.users
 
 })
 
