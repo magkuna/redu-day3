@@ -1,8 +1,8 @@
 const SET = 'users/SET'
 
-export const fetchUsersAsyncActionCreator = () => (dispatch, getState) => {
+export const fetchUsersAsyncActionCreator = (numberOfUsers=1) => (dispatch, getState) => {
   
-        fetch('https://randomuser.me/api')
+        fetch('https://randomuser.me/api?results='+ numberOfUsers)
             .then(response => response.json())
             .then(data => {
                 dispatch(

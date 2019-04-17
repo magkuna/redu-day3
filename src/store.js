@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 
-import users from './state/users'
+import users, {fetchUsersAsyncActionCreator} from './state/users'
 
 import thunk from 'redux-thunk'
 
@@ -16,3 +16,5 @@ export const store = createStore(
         applyMiddleware(thunk)
     )
 )
+
+store.dispatch(fetchUsersAsyncActionCreator(10))
