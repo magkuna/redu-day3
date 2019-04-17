@@ -5,6 +5,7 @@ const FETCH_FAILED = 'users/FETCH_FAILED'
 
 export const fetchUsersAsyncActionCreator = (numberOfUsers = 1) => (dispatch, getState) => {
 
+    dispatch(fetchStartActionCreator())
     fetch('https://randomuser.me/api?results=' + numberOfUsers)
         .then(response => response.json())
         .then(data => {
@@ -14,9 +15,10 @@ export const fetchUsersAsyncActionCreator = (numberOfUsers = 1) => (dispatch, ge
                 )
             )
         })
-        .catch(() => { })
-        .finally(() => { })
+        .catch(() => {dispatch(fetchFailedActionCreator()) })
+        .finally(() => {dispatch(fetchEndActionCreator()) })
 }
+
 
 const setUsersActionCreator = users => ({
     type: SET,
@@ -45,16 +47,21 @@ export default (state = initialState, action) => {
         case FETCH_START:
             return {
                 ...state,
+                isLoading: true,
+                isError: false
 
             }
         case FETCH_END:
             return {
                 ...state,
+                isLoading: false,
+            
 
             }
         case FETCH_FAILED:
             return {
                 ...state,
+                isError: true
 
             }
         default:
