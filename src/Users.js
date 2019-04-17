@@ -16,7 +16,7 @@ const Users = (props) => {
                         <div
                         key= {user.login.uuid}
                         >
-                            {user.name.first}
+                            {user.name.first} {user.name.last}
                         </div>
                     )
                 )
