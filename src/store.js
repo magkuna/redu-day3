@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 
 import users from './state/users'
 
-import thunk from 'redux'
+import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
     users
