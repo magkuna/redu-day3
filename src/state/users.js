@@ -23,9 +23,9 @@ const setUsersActionCreator = users => ({
     users,
 })
 
-const fetchStartActionCreator = () => ({type: FETCH_START})
-const fetchEndActionCreator = () => ({type: FETCH_END})
-const fetchFailedActionCreator = () => ({type: FETCH_FAILED})
+const fetchStartActionCreator = () => ({ type: FETCH_START })
+const fetchEndActionCreator = () => ({ type: FETCH_END })
+const fetchFailedActionCreator = () => ({ type: FETCH_FAILED })
 
 
 
@@ -42,7 +42,21 @@ export default (state = initialState, action) => {
                 ...state,
                 users: action.users
             }
+        case FETCH_START:
+            return {
+                ...state,
 
+            }
+        case FETCH_END:
+            return {
+                ...state,
+
+            }
+        case FETCH_FAILED:
+            return {
+                ...state,
+
+            }
         default:
             return state
     }
